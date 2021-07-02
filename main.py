@@ -1,6 +1,6 @@
 import streamlit as st
 from prep_data import iris_df, X_train, X_test, y_train, y_test
-from functions import prediction, clf_selector
+from functions import prediction, clf_s
 
 # Add title widget
 st.title("Iris Flower Species Prediction App")  
