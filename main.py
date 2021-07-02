@@ -1,9 +1,6 @@
 import streamlit as st
 from prep_data import iris_df, X_train, X_test, y_train, y_test
-from functions import prediction, m_score, clf_selector
-
-# Creating the SVC model and storing the accuracy score in a variable 'score'.
-svc_model, score = m_score(X_train, y_train)
+from functions import prediction, clf_selector
 
 # Add title widget
 st.title("Iris Flower Species Prediction App")  
@@ -19,7 +16,10 @@ p_wid = st.sidebar.slider("Petal Width", float(iris_df["PetalWidthCm"].min()), f
 
 # Add Classifier selector
 clf = st.sidebar.selectbox('Classifier',('Support Vector Machine', 'Logistic Regression', 'Random Forest Classifier'))
-model = clf_selector(clf)
+
+# Get values
+clf_d = clf_selector(clf)
+model, score = model(X_train, y_train)
 
 # When 'Predict' button is pushed, the 'prediction()' function must be called 
 # and the value returned by it must be stored in a variable, say 'species_type'. 
