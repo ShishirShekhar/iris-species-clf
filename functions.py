@@ -36,7 +36,7 @@ def lr_score(X_train, y_train):
     score = log_reg.score(X_train, y_train)
     return log_reg, score
 
-def clf_s(clf):
+def clf_s(clf, X_train, y_train):
     if clf == 'Support Vector Machine':
         return svc_score(X_train, y_train)
     elif clf == 'Logistic Regression':

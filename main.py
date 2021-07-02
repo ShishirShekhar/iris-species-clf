@@ -18,8 +18,7 @@ p_wid = st.sidebar.slider("Petal Width", float(iris_df["PetalWidthCm"].min()), f
 clf = st.sidebar.selectbox('Classifier',('Support Vector Machine', 'Logistic Regression', 'Random Forest Classifier'))
 
 # Get values
-clf_d = clf_s(clf)
-model, score = model(X_train, y_train)
+model, score = clf_s(clf, X_train, y_train)
 
 # When 'Predict' button is pushed, the 'prediction()' function must be called 
 # and the value returned by it must be stored in a variable, say 'species_type'. 
