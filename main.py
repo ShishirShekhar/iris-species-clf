@@ -23,7 +23,7 @@ model, score = clf_s(clf, X_train, y_train)
 # When 'Predict' button is pushed, the 'prediction()' function must be called 
 # and the value returned by it must be stored in a variable, say 'species_type'. 
 # Print the value of 'species_type' and 'score' variable using the 'st.write()' function.
-if st.button("Predict"):
+if st.sidebar.button("Predict"):
 	species_type = prediction(model, s_len, s_wid, p_len, p_wid)
 	st.write("Species predicted:", species_type)
 	st.write('Classifier used:', model)
