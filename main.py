@@ -18,7 +18,7 @@ p_wid = st.sidebar.slider("Petal Width", float(iris_df["PetalWidthCm"].min()), f
 clf = st.sidebar.selectbox('Classifier',('Support Vector Machine', 'Logistic Regression', 'Random Forest Classifier'))
 
 # Get values
-clf_d = clf_selector(clf)
+clf_d = clf_s(clf)
 model, score = model(X_train, y_train)
 
 # When 'Predict' button is pushed, the 'prediction()' function must be called 
