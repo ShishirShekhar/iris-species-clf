@@ -18,7 +18,7 @@ if nav == 'Prediction':
 elif nav == 'Home':
     st.image('welcome.jpg')
     st.title('Welcome to Iris Flower Species Prediction App')
-    st.markdown('### This website predict the specie of iris flower with different Machine learning classificaion model on basis of given data')
+    st.markdown('### This website predicts the species of iris flower with different Machine learning classificaion model on the basis of given data')
     st.subheader('Data Used')
     d_check = st.checkbox('Show data used')
     if d_check:
