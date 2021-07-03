@@ -1,30 +1,45 @@
-import streamlit as st
-from prep_data import iris_df, X_train, X_test, y_train, y_test
-from functions import prediction, clf_s
+"""
+This module display the web page
+"""
 
-# Add title widget
-st.title("Iris Flower Species Prediction App")  
+import streamlit as st
+from prep_data import df, X_train, y_train, X, y
+from display_func import pred_page, graph_p
 
 # Add sidbar title
-st.sidebar.title("Iris Flower Species Prediction App")
+st.sidebar.title("Menu")
 
-# Add 4 sliders and store the value returned by them in 4 separate variables.
-s_len = st.sidebar.slider("Sepal Length", float(iris_df["SepalLengthCm"].min()), float(iris_df["SepalLengthCm"].max()))
-s_wid = st.sidebar.slider("Sepal Width", float(iris_df["SepalWidthCm"].min()), float(iris_df["SepalWidthCm"].max()))
-p_len = st.sidebar.slider("Petal Length", float(iris_df["PetalLengthCm"].min()), float(iris_df["PetalLengthCm"].max()))
-p_wid = st.sidebar.slider("Petal Width", float(iris_df["PetalWidthCm"].min()), float(iris_df["PetalWidthCm"].max()))
+nav = st.sidebar.radio('Navigator', ('Home', 'Working', 'Prediction', 'Graph', 'Contact Us'))
 
-# Add Classifier selector
-clf = st.sidebar.selectbox('Classifier',('Support Vector Machine', 'Logistic Regression', 'Random Forest Classifier'))
+if nav == 'Prediction':
+	st.title("Iris Flower Species Prediction App") 
+	pred_page(df, X_train, y_train)
 
-# Get values
-model, score = clf_s(clf, X_train, y_train)
+elif nav == 'Home':
+    st.image('welcome.jpg')
+    st.title('Welcome to Iris Flower Species Prediction App')
+    st.markdown('### This website predict the specie of iris flower with different Machine learning classificaion model on basis of given data')
+    st.subheader('Data Used')
+    d_check = st.checkbox('Show data used')
+    if d_check:
+	    st.dataframe(df, width=1000, height=300)
 
-# When 'Predict' button is pushed, the 'prediction()' function must be called 
-# and the value returned by it must be stored in a variable, say 'species_type'. 
-# Print the value of 'species_type' and 'score' variable using the 'st.write()' function.
-if st.sidebar.button("Predict"):
-	species_type = prediction(model, s_len, s_wid, p_len, p_wid)
-	st.write("Species predicted:", species_type)
-	st.write('Classifier used:', model)
-	st.write("Accuracy score of this model is:", score)
+elif nav == 'Working':
+	st.header('Working of This Website')
+	st.subheader('Types of Iris Flower Species')
+	st.image('iris_types.jpg', width = 800)
+	st.subheader('How Species are predicted')
+	st.image('iris_c.png')
+
+elif nav == 'Graph':
+	st.title('Graph for prediction model')
+	graph_p(X, y)
+
+else:
+	st.balloons()
+	st.header('Contact Us')
+	st.markdown('''### Name:
+	Shishir Shekhar''')
+	st.markdown('''### Email:
+	sspdav02@gmail.com''')
+	st.markdown('''### GitHub: [ShishirShekhar](https://github.com/ShishirShekhar/)''')

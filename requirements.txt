@@ -1,3 +1,4 @@
-pandas==1.2.5
+matplotlib==3.4.2
 streamlit==0.83.0
+pandas==1.2.5
 scikit_learn==0.24.2
