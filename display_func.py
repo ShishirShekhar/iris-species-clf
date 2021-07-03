@@ -30,9 +30,8 @@ def pred_page(df, X_train, y_train):
             loading.write(f'Progess: {i+1}%')
         st.success('Predicted successfully!')
         st.success(f"Species predicted: {species_type}")
-        species_image = f'{species_type + ".jpg"}'
-        #st.image(species_image, width=600)
-        st.warning('Image will be added soon!')
+        species_image = species_type + ".jpg"
+        st.image(species_image, width=600)
         st.write('Classifier used:', model)
         st.write("Accuracy score of this model is:", score)
         st.warning('Also try different models!')
