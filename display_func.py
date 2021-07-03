@@ -25,7 +25,7 @@ def pred_page(df, X_train, y_train):
         progress = st.progress(0)
         loading = st.empty()
         for i in range(100):
-            time.sleep(0.001)
+            time.sleep(0.1)
             progress.progress(i+1)
             loading.write(f'Progess: {i+1}%')
         st.success('Predicted successfully!')
