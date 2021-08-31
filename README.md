@@ -1,4 +1,7 @@
 # iris-species-clf
+
+This web app is created to classify the species of iris flower, you can also select different machine learning alogrithm and tune them accordingly, <br>
+
 Streamlit => https://share.streamlit.io/shishirshekhar/iris-species-clf/main/main.py <br>
 Heroku => https://iris-s-clf.herokuapp.com/
 
