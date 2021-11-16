@@ -1,45 +1,34 @@
 """
 This module display the web page
 """
-
+# Import necessary modules
 import streamlit as st
-from prep_data import df, X_train, y_train, X, y
-from display_func import pred_page, graph_p
+
+# Import pages
+from pages import home, working, prediction, visualization, about
+
+# Set app configuration
+st.set_page_config(
+	page_title="Iris Species Classifier",
+	page_icon="random",
+	layout="centered",
+	initial_sidebar_state="auto"
+)
+
+# Create dict of pages
+pages = {
+	"Home": home,
+	"Visulization": visualization,
+	"Prediction": prediction,
+	"Working": working,
+	"About": about
+}
 
 # Add sidbar title
 st.sidebar.title("Menu")
 
-nav = st.sidebar.radio('Navigator', ('Home', 'Working', 'Prediction', 'Graph', 'Contact Us'))
+# Add page navigator
+page = st.sidebar.radio('Navigator', pages.keys())
 
-if nav == 'Prediction':
-	st.title("Iris Flower Species Prediction App") 
-	pred_page(df, X_train, y_train)
-
-elif nav == 'Home':
-    st.image('welcome.jpg')
-    st.title('Welcome to Iris Flower Species Prediction App')
-    st.markdown('### This website predicts the species of iris flower with different Machine learning classificaion model on the basis of given data')
-    st.subheader('Data Used')
-    d_check = st.checkbox('Show data used')
-    if d_check:
-	    st.dataframe(df, width=1000, height=300)
-
-elif nav == 'Working':
-	st.header('Working of This Website')
-	st.subheader('Types of Iris Flower Species')
-	st.image('iris_types.jpg', width = 800)
-	st.subheader('How Species are predicted')
-	st.image('iris_c.png')
-
-elif nav == 'Graph':
-	st.title('Graph for prediction model')
-	graph_p(X, y)
-
-else:
-	st.balloons()
-	st.header('Contact Us')
-	st.markdown('''### Name:
-	Shishir Shekhar''')
-	st.markdown('''### Email:
-	sspdav02@gmail.com''')
-	st.markdown('''### GitHub: [ShishirShekhar](https://github.com/ShishirShekhar/)''')
+# Create the page selected by the user
+pages[page].app()
